@@ -1,0 +1,4 @@
+- name: download jenkins
+  get_url:
+    url: https://pkg.jenkins.io/debian-stable/binary/jenkins_2.73.3_all.deb
+    dest: /tmp/jenkins.deb
