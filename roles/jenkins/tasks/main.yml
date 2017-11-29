@@ -1,5 +1,20 @@
-- name: download jenkins
-  get_url:
-    url: https://pkg.jenkins.io/debian-stable/binary/jenkins_{{ jenkins_version }}_all.deb
-    dest: /tmp/jenkins_{{ jenkins_version }}.deb
+- name: install repo key
+  apt_key:
+    url: https://pkg.jenkins.io/debian-stable/jenkins.io.key
+    state: present
+  become: yes
 
+- name: add jenkins repo
+  apt_repository:
+    repo: deb https://pkg.jenkins.io/debian-stable binary/
+    state: present
+    update_cache: yes
+  become: yes
+
+- name: install jenkins
+  apt:
+    name: jenkins={{ jenkins_version }}
+    state: present
+    update_cache: yes
+    force: yes
+  become: yes
