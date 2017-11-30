@@ -18,3 +18,37 @@
     update_cache: yes
     force: yes
   become: yes
+  register: installed_jenkins
+
+- name: disable setup wizard
+  replace:
+    path: /etc/default/jenkins
+    regexp: '^JAVA_ARGS="({{ disable_setup_wizard }}\s?)?(.*)?"$'
+    replace: 'JAVA_ARGS="{{ disable_setup_wizard }} \2"'
+  become: yes
+  when: installed_jenkins.changed
+
+- name: Create custom init scripts directory.
+  file:
+    path: "/var/lib/jenkins/init.groovy.d"
+    state: directory
+    owner: 'jenkins'
+    group: 'jenkins'
+    mode: 0775
+  become: yes
+
+- name: configure admin user
+  template:
+    src: admin_user.groovy
+    dest: '/var/lib/jenkins/init.groovy.d/admin_user.groovy'
+    owner: 'jenkins'
+    group: 'jenkins'
+    mode: 0775
+  become: yes
+
+- name: restart jenkins
+  service:
+    name: jenkins
+    state: restarted
+  become: yes
+  when: installed_jenkins.changed
