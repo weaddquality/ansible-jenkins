@@ -9,7 +9,7 @@
   pause:
     seconds: 2
 
-- name: wait for jenkins to be operational
+- name: wait for jenkins to start up
   uri:
     url: "http://localhost:8080/login"
     status_code: 200

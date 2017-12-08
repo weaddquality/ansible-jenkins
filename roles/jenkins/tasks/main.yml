@@ -48,10 +48,130 @@
 
 - import_tasks: wait_for_jenkins.yml
 
-- name: install git plugin
+- name: install plugin "structs" which "credentials" depends on
+  jenkins_plugin:
+    name: structs
+    version: "1.10"
+    url_username: "{{ jenkins_admin_user }}"
+    url_password: "{{ jenkins_admin_pwd }}"
+  become: yes
+
+- name: install plugin "credentials" which "ssh-credentials" depends on
+  jenkins_plugin:
+    name: credentials
+    version: "2.1.16"
+    url_username: "{{ jenkins_admin_user }}"
+    url_password: "{{ jenkins_admin_pwd }}"
+  become: yes
+
+- name: install plugin "ssh-credentials" which "git" depends on
+  jenkins_plugin:
+    name: ssh-credentials
+    version: "1.13"
+    url_username: "{{ jenkins_admin_user }}"
+    url_password: "{{ jenkins_admin_pwd }}"
+  become: yes
+
+- name: install plugin "scm-api" which "git" depends on
+  jenkins_plugin:
+    name: scm-api
+    version: "2.2.5"
+    url_username: "{{ jenkins_admin_user }}"
+    url_password: "{{ jenkins_admin_pwd }}"
+  become: yes
+
+- name: install plugin "display-url-api" which "mailer" depends on
+  jenkins_plugin:
+    name: display-url-api
+    version: "2.2.0"
+    url_username: "{{ jenkins_admin_user }}"
+    url_password: "{{ jenkins_admin_pwd }}"
+  become: yes
+
+- name: install plugin "mailer" which "git" depends on
+  jenkins_plugin:
+    name: mailer
+    version: "1.20"
+    url_username: "{{ jenkins_admin_user }}"
+    url_password: "{{ jenkins_admin_pwd }}"
+  become: yes
+
+- name: install plugin "apache-httpcomponents-client-4-api" which "git-client" depends on
+  jenkins_plugin:
+    name: apache-httpcomponents-client-4-api
+    version: "4.5.3-2.0"
+    url_username: "{{ jenkins_admin_user }}"
+    url_password: "{{ jenkins_admin_pwd }}"
+  become: yes
+
+- name: install plugin "jsch" which "git-client" depends on
+  jenkins_plugin:
+    name: jsch
+    version: "0.1.54.1"
+    url_username: "{{ jenkins_admin_user }}"
+    url_password: "{{ jenkins_admin_pwd }}"
+  become: yes
+
+- name: install plugin "git-client" which "git" depends on
+  jenkins_plugin:
+    name: git-client
+    version: "2.6.0"
+    url_username: "{{ jenkins_admin_user }}"
+    url_password: "{{ jenkins_admin_pwd }}"
+  become: yes
+
+- name: install plugin "workflow-step-api" which "workflow-scm-step" depends on
+  jenkins_plugin:
+    name: workflow-step-api
+    version: "2.14"
+    url_username: "{{ jenkins_admin_user }}"
+    url_password: "{{ jenkins_admin_pwd }}"
+  become: yes
+
+- name: install plugin "workflow-scm-step" which "git" depends on
+  jenkins_plugin:
+    name: workflow-scm-step
+    version: "2.6"
+    url_username: "{{ jenkins_admin_user }}"
+    url_password: "{{ jenkins_admin_pwd }}"
+  become: yes
+
+- name: install plugin "workflow-api" which "junit" depends on
+  jenkins_plugin:
+    name: workflow-api
+    version: "2.24"
+    url_username: "{{ jenkins_admin_user }}"
+    url_password: "{{ jenkins_admin_pwd }}"
+  become: yes
+
+- name: install plugin "script-security" which "junit" depends on
+  jenkins_plugin:
+    name: script-security
+    version: "1.36"
+    url_username: "{{ jenkins_admin_user }}"
+    url_password: "{{ jenkins_admin_pwd }}"
+  become: yes
+
+- name: install plugin "junit" which "matrix-project" depends on
+  jenkins_plugin:
+    name: junit
+    version: "1.23"
+    url_username: "{{ jenkins_admin_user }}"
+    url_password: "{{ jenkins_admin_pwd }}"
+  become: yes
+
+- name: install plugin "matrix-project" which "git" depends on
+  jenkins_plugin:
+    name: matrix-project
+    version: "1.12"
+    url_username: "{{ jenkins_admin_user }}"
+    url_password: "{{ jenkins_admin_pwd }}"
+  become: yes
+
+- name: install plugin "git"
   jenkins_plugin:
     name: git
-    version: 3.6.4
+    version: "3.6.4"
     url_username: "{{ jenkins_admin_user }}"
     url_password: "{{ jenkins_admin_pwd }}"
   become: yes
