@@ -46,9 +46,14 @@
     mode: 0775
   become: yes
 
-- name: restart jenkins
-  service:
-    name: jenkins
-    state: restarted
+- import_tasks: wait_for_jenkins.yml
+
+- name: install git plugin
+  jenkins_plugin:
+    name: git
+    version: 3.6.4
+    url_username: "{{ jenkins_admin_user }}"
+    url_password: "{{ jenkins_admin_pwd }}"
   become: yes
-  when: installed_jenkins.changed
+
+- import_tasks: wait_for_jenkins.yml

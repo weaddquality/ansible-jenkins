@@ -1,4 +1,6 @@
-jenkins_version: '2.73.2'
+jenkins_version: '2.73.3'
 disable_setup_wizard: '-Djenkins.install.runSetupWizard=false'
 jenkins_admin_user: 'admin'
 jenkins_admin_pwd: 'lasertorsk'
+url_username: "{{ jenkins_admin_user }}"
+url_password: "{{ jenkins_admin_pwd }}"
