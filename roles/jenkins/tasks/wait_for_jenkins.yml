@@ -1,0 +1,12 @@
+- name: wait for jenkins to shut down
+  pause:
+    seconds: 2
+
+- name: wait for jenkins to start up
+  uri:
+    url: "http://localhost:8080/login"
+    status_code: 200
+  register: result
+  until: result.status == 200
+  retries: 60
+  delay: 1

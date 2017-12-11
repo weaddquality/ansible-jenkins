@@ -52,3 +52,23 @@
     state: restarted
   become: yes
   when: installed_jenkins.changed
+- import_tasks: wait_for_jenkins.yml
+
+- name: install plugins
+  jenkins_plugin:
+    name: "{{ item.split(':')[0] }}"
+    version: "{{ item.split(':')[1] }}"
+    url_username: "{{ jenkins_admin_user }}"
+    url_password: "{{ jenkins_admin_pwd }}"
+  become: yes
+  register: installed_plugins
+  with_items: "{{ plugins }}"
+
+- name: restart jenkins
+  service:
+    name: jenkins
+    state: restarted
+  become: yes
+  when: installed_plugins.changed
+
+- import_tasks: wait_for_jenkins.yml

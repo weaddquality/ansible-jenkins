@@ -1,4 +1,22 @@
-jenkins_version: '2.73.2'
+jenkins_version: '2.89.1'
 disable_setup_wizard: '-Djenkins.install.runSetupWizard=false'
 jenkins_admin_user: 'admin'
 jenkins_admin_pwd: 'lasertorsk'
+
+plugins:
+  - apache-httpcomponents-client-4-api:4.5.3-2.0
+  - credentials:2.1.16
+  - display-url-api:2.2.0
+  - git-client:2.6.0
+  - git:3.6.4
+  - jsch:0.1.54.1
+  - junit:1.23
+  - mailer:1.20
+  - matrix-project:1.12
+  - scm-api:2.2.5
+  - script-security:1.36
+  - ssh-credentials:1.13
+  - structs:1.10
+  - workflow-api:2.24
+  - workflow-scm-step:2.6
+  - workflow-step-api:2.14
