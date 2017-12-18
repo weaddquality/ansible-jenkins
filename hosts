@@ -1,2 +1,2 @@
 [jenkins]
-ec2-54-194-36-82.eu-west-1.compute.amazonaws.com
+ec2-54-194-36-82.eu-west-1.compute.amazonaws.com ansible_ssh_user="{{ vault_ansible_ssh_user }}" ansible_become_pass="{{ vault_ansible_become_pass }}"
