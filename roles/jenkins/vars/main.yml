@@ -1,7 +1,7 @@
 jenkins_version: '2.89.1'
 disable_setup_wizard: '-Djenkins.install.runSetupWizard=false'
-jenkins_admin_user: 'admin'
-jenkins_admin_pwd: 'lasertorsk'
+jenkins_admin_user: "{{ vault_jenkins_admin_user }}"
+jenkins_admin_pwd: "{{ vault_jenkins_admin_pwd }}"
 
 plugins:
   - apache-httpcomponents-client-4-api:4.5.3-2.0

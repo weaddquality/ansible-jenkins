@@ -2,3 +2,6 @@
   hosts: jenkins
   roles:
     - jenkins
+  vars_files:
+  - ./vault.yml
+  
