@@ -20,3 +20,4 @@ plugins:
   - workflow-api:2.24
   - workflow-scm-step:2.6
   - workflow-step-api:2.14
+  - job-dsl:1.66
