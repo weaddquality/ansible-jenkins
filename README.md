@@ -1,5 +1,4 @@
-<img src="https://travis-ci.org/weaddquality/ansible-jenkins.svg?branch=master">
-# ansible-jenkins
+# ansible-jenkins <img src="https://travis-ci.org/weaddquality/ansible-jenkins.svg?branch=master">
 this repo installs jenkins and configures it with ansible
 
 ## prerequisites
