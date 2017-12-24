@@ -1,5 +1,4 @@
-<img src="https://travis-ci.org/weaddquality/ansible-jenkins.svg?branch=master">
-# ansible-jenkins
+# ansible-jenkins <img src="https://travis-ci.org/weaddquality/ansible-jenkins.svg?branch=master">
 this repo installs jenkins and configures it with ansible
 
 ## prerequisites
@@ -7,7 +6,7 @@ this repo installs jenkins and configures it with ansible
 * ubuntu-machine to push jenkins-installation too
 
 ## installation
-* ```git clone https://github.com/jakobalander/ansible-jenkins.git```
+* ```git clone https://github.com/weaddquality/ansible-jenkins.git```
 * ```ansible-vault create vault.yml``` create a vault to store your sensitive data in:
 ```
 ---
