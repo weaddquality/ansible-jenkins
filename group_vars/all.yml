@@ -1,2 +1,4 @@
 ansible_python_interpreter: "/usr/bin/python3"
+python_version_for_travis: "2.7"
+ansible_version_for_travis: "2.4.2.0"
 vars_files: "./vault.yml"
