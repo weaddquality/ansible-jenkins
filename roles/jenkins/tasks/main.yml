@@ -64,6 +64,15 @@
   register: installed_plugins
   with_items: "{{ plugins }}"
 
+- name: configure locale plugin
+  template:
+    src: locale.xml
+    dest: "{{ jenkins_home }}/locale.xml"
+    owner: "{{ jenkins_user }}"
+    group: "{{ jenkins_group }}"
+    mode: 0775
+  become: yes
+
 - name: restart jenkins
   service:
     name: jenkins

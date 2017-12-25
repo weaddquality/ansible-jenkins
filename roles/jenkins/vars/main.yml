@@ -3,6 +3,10 @@ jenkins_home: "/var/lib/jenkins"
 disable_setup_wizard: "-Djenkins.install.runSetupWizard=false"
 jenkins_admin_user: "{{ vault_jenkins_admin_user }}"
 jenkins_admin_pwd: "{{ vault_jenkins_admin_pwd }}"
+jenkins_user: "jenkins"
+jenkins_group: "jenkins"
+
+plugin_locale_version: 1.2
 
 plugins:
   - apache-httpcomponents-client-4-api:4.5.3-2.0
@@ -22,3 +26,4 @@ plugins:
   - workflow-scm-step:2.6
   - workflow-step-api:2.14
   - job-dsl:1.66
+  - locale:{{ plugin_locale_version }}

@@ -1,0 +1,5 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<locale plugin="locale@{{ plugin_locale_version }}">
+    <systemLocale>en</systemLocale>
+    <ignoreAcceptLanguage>true</ignoreAcceptLanguage>
+</locale>
