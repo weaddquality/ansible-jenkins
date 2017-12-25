@@ -1,14 +1,13 @@
 ---
 language: python
 python: "2.7"
-ansible_version_on_travis: "2.4.2.0"
 
 before_install:
   - sudo apt-get update -qq
   - sudo apt-get install -qq python-apt
 
 install:
-  - pip install ansible==$ansible_version_on_travis
+  - pip install ansible==2.4.2.0
 
 script:
 - ansible-playbook -i roles/jenkins/tests/inventory roles/jenkins/tests/test.yml --syntax-check
