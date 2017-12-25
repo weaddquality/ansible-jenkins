@@ -30,7 +30,7 @@
 
 - name: Create custom init scripts directory.
   file:
-    path: "/var/lib/jenkins/init.groovy.d"
+    path: "{{ jenkins_home }}/init.groovy.d"
     state: directory
     owner: 'jenkins'
     group: 'jenkins'
@@ -40,7 +40,7 @@
 - name: configure admin user
   template:
     src: admin_user.groovy
-    dest: '/var/lib/jenkins/init.groovy.d/admin_user.groovy'
+    dest: "{{ jenkins_home }}/init.groovy.d/admin_user.groovy"
     owner: 'jenkins'
     group: 'jenkins'
     mode: 0775

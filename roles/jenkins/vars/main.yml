@@ -1,5 +1,6 @@
-jenkins_version: '2.89.1'
-disable_setup_wizard: '-Djenkins.install.runSetupWizard=false'
+jenkins_version: "2.89.1"
+jenkins_home: "/var/lib/jenkins"
+disable_setup_wizard: "-Djenkins.install.runSetupWizard=false"
 jenkins_admin_user: "{{ vault_jenkins_admin_user }}"
 jenkins_admin_pwd: "{{ vault_jenkins_admin_pwd }}"
 
