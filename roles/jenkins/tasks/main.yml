@@ -32,8 +32,8 @@
   file:
     path: "{{ jenkins_home }}/init.groovy.d"
     state: directory
-    owner: 'jenkins'
-    group: 'jenkins'
+    owner: "{{ jenkins_user }}"
+    group: "{{ jenkins_group }}"
     mode: 0775
   become: yes
 
@@ -41,8 +41,8 @@
   template:
     src: admin_user.groovy
     dest: "{{ jenkins_home }}/init.groovy.d/admin_user.groovy"
-    owner: 'jenkins'
-    group: 'jenkins'
+    owner: "{{ jenkins_user }}"
+    group: "{{ jenkins_group }}"
     mode: 0775
   become: yes
 
