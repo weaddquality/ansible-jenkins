@@ -1,29 +1,75 @@
-jenkins_version: "2.89.2"
+this_repository: 'https://github.com/weaddquality/ansible-jenkins.git'
 jenkins_home: "/var/lib/jenkins"
-disable_setup_wizard: "-Djenkins.install.runSetupWizard=false"
+jenkins_version: "2.89.2"
 jenkins_admin_user: "{{ vault_jenkins_admin_user }}"
 jenkins_admin_pwd: "{{ vault_jenkins_admin_pwd }}"
 jenkins_user: "jenkins"
 jenkins_group: "jenkins"
+disable_setup_wizard: "-Djenkins.install.runSetupWizard=false"
+jenkins_seed_job:
+  name: ~seed_job
+  dsl_script_path: '**/generate_jobs_jenkinsfile.groovy'
 
+plugin_git_version: 3.7.0
+plugin_job_dsl_version: 1.66
 plugin_locale_version: 1.2
+plugin_startup_trigger: 2.8
 
 plugins:
-  - apache-httpcomponents-client-4-api:4.5.3-2.0
-  - credentials:2.1.16
-  - display-url-api:2.2.0
-  - git-client:2.7.0
-  - git:3.7.0
-  - jsch:0.1.54.1
-  - junit:1.23
-  - mailer:1.20
-  - matrix-project:1.12
-  - scm-api:2.2.6
-  - script-security:1.39
-  - ssh-credentials:1.13
-  - structs:1.10
-  - workflow-api:2.24
-  - workflow-scm-step:2.6
-  - workflow-step-api:2.14
-  - job-dsl:1.66
-  - locale:{{ plugin_locale_version }}
+ - ace-editor:1.1
+ - apache-httpcomponents-client-4-api:4.5.3-2.0
+ - async-http-client:1.9.40.0
+ - authentication-tokens:1.3
+ - branch-api:2.0.16
+ - cloudbees-folder:6.2.1
+ - credentials-binding:1.13
+ - credentials:2.1.16
+ - display-url-api:2.2.0
+ - docker-commons:1.10
+ - docker-workflow:1.14
+ - durable-task:1.17
+ - git-client:2.7.0
+ - git-server:1.7
+ - git:{{ plugin_git_version }}
+ - handlebars:1.1.1
+ - jackson2-api:2.8.10.1
+ - job-dsl:{{ plugin_job_dsl_version }}
+ - jquery-detached:1.2.1
+ - jsch:0.1.54.1
+ - junit:1.23
+ - locale:{{ plugin_locale_version }}
+ - mailer:1.20
+ - matrix-project:1.12
+ - metrics:3.1.2.10
+ - momentjs:1.1.1
+ - multiple-scms:0.6
+ - pipeline-build-step:2.6
+ - pipeline-graph-analysis:1.5
+ - pipeline-input-step:2.8
+ - pipeline-milestone-step:1.3.1
+ - pipeline-model-api:1.2.5
+ - pipeline-model-declarative-agent:1.1.1
+ - pipeline-model-definition:1.2.5
+ - pipeline-model-extensions:1.2.5
+ - pipeline-rest-api:2.9
+ - pipeline-stage-step:2.3
+ - pipeline-stage-tags-metadata:1.2.5
+ - pipeline-stage-view:2.9
+ - plain-credentials:1.4
+ - scm-api:2.2.6
+ - script-security:1.39
+ - ssh-credentials:1.13
+ - structs:1.10
+ - support-core:2.44
+ - workflow-aggregator:2.5
+ - workflow-api:2.24
+ - workflow-basic-steps:2.6
+ - workflow-cps-global-lib:2.9
+ - workflow-cps:2.42
+ - workflow-durable-task-step:2.17
+ - workflow-job:2.16
+ - workflow-multibranch:2.16
+ - workflow-scm-step:2.6
+ - workflow-step-api:2.14
+ - workflow-support:2.16
+ - startup-trigger-plugin:{{ plugin_startup_trigger }}

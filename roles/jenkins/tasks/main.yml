@@ -46,13 +46,8 @@
     mode: 0775
   become: yes
 
-- name: restart jenkins
-  service:
-    name: jenkins
-    state: restarted
-  become: yes
+- import_tasks: restart_jenkins.yml
   when: installed_jenkins.changed
-- import_tasks: wait_for_jenkins.yml
 
 - name: install plugins
   jenkins_plugin:
@@ -73,11 +68,29 @@
     mode: 0775
   become: yes
 
-- name: restart jenkins
-  service:
-    name: jenkins
-    state: restarted
-  become: yes
+- import_tasks: restart_jenkins.yml
   when: installed_plugins.changed
 
-- import_tasks: wait_for_jenkins.yml
+- name: create seed job
+  template:
+    src: seed_job.groovy
+    dest: '{{ jenkins_home }}/init.groovy.d/seed_job.groovy'
+    owner: "{{ jenkins_user }}"
+    group: "{{ jenkins_group }}"
+    mode: 0775
+  become: yes
+  register: seed_job
+
+- name: in-process script approval
+  template:
+    src: approve_script.groovy
+    dest: '{{ jenkins_home }}/init.groovy.d/approve_script.groovy'
+    owner: "{{ jenkins_user }}"
+    group: "{{ jenkins_group }}"
+    mode: 0775
+  become: yes
+
+- import_tasks: restart_jenkins.yml
+  when: seed_job.changed
+- import_tasks: restart_jenkins.yml
+  when: seed_job.changed

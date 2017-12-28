@@ -1,3 +1,9 @@
+- name: restart jenkins initiated
+  service:
+    name: jenkins
+    state: restarted
+  become: yes
+
 - name: wait for jenkins to shut down
   pause:
     seconds: 2
